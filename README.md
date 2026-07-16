@@ -19,7 +19,7 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 - **Results per test**: a click/movement heatmap over the actual screen — tuned so even a single click reads clearly instead of blending into the interface — success/time/click stats, and a session log. Click any session to zoom the whole view (heatmap, stats, most-clicked) down to just that one.
 - **First Click mode**: a heatmap and ranking of where testers click *first* on a screen, not everything they ever click there — the classic first-click-testing signal for whether a layout reads the way you expect. Its own sidebar entry jumps straight into it for a chosen test.
 - **Aggregate average heatmap**: a second heatmap mode that shows what fraction of *all* testers who reached a screen clicked in each spot, rather than a raw pile of clicks — so a handful of testers doesn't make everything look equally "hot." Pick it from the download dropdown, separate from downloading whatever's currently on screen.
-- **AI trend analysis**: a button on a test's Results page sends its session data to an AI provider of your choice and gets back a written summary of trends and friction points — where testers hesitated, backtracked, or clicked the wrong thing. Works with Anthropic (Claude), OpenAI (GPT), Google (Gemini), or a private/local model (e.g. Ollama, LM Studio) for a fully free, offline option. The "AI Insights" sidebar entry jumps straight to it for a chosen test.
+- **AI trend analysis**: a button on a test's Results page sends its session data to an AI provider of your choice and gets back a written summary of trends and friction points — where testers hesitated, backtracked, or clicked the wrong thing — including whether any group (by age, occupation, or any custom pre-test question) struggled more than others. Works with Anthropic (Claude), OpenAI (GPT), Google (Gemini), or a private/local model (e.g. Ollama, LM Studio) for a fully free, offline option. The "AI Insights" sidebar entry jumps straight to it for a chosen test. See [How the AI analysis works](#how-the-ai-analysis-works) below.
 - **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or a full plain-text dataset export (every session's summary plus its raw click/movement trail) for a whole test.
 - The admin view stays in sync automatically — a session recorded from a shared link shows up without needing to reload.
 - **Settings**: switch between light (default) and dark mode, save a Figma personal access token once so you don't have to paste it in for every import, configure your AI provider of choice, and see the app's version, author, and a link back to this repo.
@@ -58,6 +58,23 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 **AI Insights** — pick a test and get a written trend analysis straight away. This example ran against a free local model (Ollama) with zero API cost.
 
 ![AI-generated trend analysis](screenshots/ai-insights.png)
+
+## How the AI analysis works
+
+Clicking **Analyze trends** doesn't just dump raw session JSON at a model. TRACE first builds a compact, plain-text summary: the test's name, task, and goal screen; aggregate stats (session count, success rate, average time/clicks); then per session, its result, duration, click count, the path of screens it visited, its pre-test Q&A and post-test comment, and its click/tap trail. Raw pointer-movement events are left out — they're noise for spotting trends and would just burn tokens.
+
+If the test has a pre-test questionnaire, every question's answers get lined up against that session's outcome in a separate table — so age, occupation, or any custom question can be compared across testers directly, instead of the model having to piece a pattern together from scattered session entries itself.
+
+That text is sent to TRACE's own server, which wraps it in one instruction: summarize the clearest trends and friction points, and — if questionnaire data is present — compare groups by their answers, but only report a difference the data actually supports (with only a session or two per group, say so rather than call it a trend). The server then forwards that prompt to whichever provider you picked in Settings:
+
+| Provider | Endpoint |
+|---|---|
+| Anthropic (Claude) | `api.anthropic.com/v1/messages` |
+| OpenAI (GPT) | `api.openai.com/v1/chat/completions` |
+| Google (Gemini) | `generativelanguage.googleapis.com` |
+| Local / private model | whatever OpenAI-compatible endpoint you configure (e.g. Ollama, LM Studio) |
+
+Your API key (or local endpoint) travels with that one request and is never stored server-side or logged — same as it's never sent anywhere except that provider.
 
 ## What's in this repo
 
