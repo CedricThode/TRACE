@@ -17,10 +17,12 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 - **Optional post-test comment box** so testers can describe their experience in their own words after finishing.
 - **Run it yourself** in-app, or **share a link** so someone else can take the test remotely from anywhere — no deployment needed, just a button.
 - **Results per test**: a click/movement heatmap over the actual screen — tuned so even a single click reads clearly instead of blending into the interface — success/time/click stats, and a session log. Click any session to zoom the whole view (heatmap, stats, most-clicked) down to just that one.
+- **First Click mode**: a heatmap and ranking of where testers click *first* on a screen, not everything they ever click there — the classic first-click-testing signal for whether a layout reads the way you expect. Its own sidebar entry jumps straight into it for a chosen test.
 - **Aggregate average heatmap**: a second heatmap mode that shows what fraction of *all* testers who reached a screen clicked in each spot, rather than a raw pile of clicks — so a handful of testers doesn't make everything look equally "hot." Pick it from the download dropdown, separate from downloading whatever's currently on screen.
+- **AI trend analysis**: a button on a test's Results page sends its session data to an AI provider of your choice and gets back a written summary of trends and friction points — where testers hesitated, backtracked, or clicked the wrong thing. Works with Anthropic (Claude), OpenAI (GPT), Google (Gemini), or a private/local model (e.g. Ollama, LM Studio) for a fully free, offline option. The "AI Insights" sidebar entry jumps straight to it for a chosen test.
 - **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or a full plain-text dataset export (every session's summary plus its raw click/movement trail) for a whole test.
 - The admin view stays in sync automatically — a session recorded from a shared link shows up without needing to reload.
-- **Settings**: switch between light (default) and dark mode, save a Figma personal access token once so you don't have to paste it in for every import, and see the app's version, author, and a link back to this repo.
+- **Settings**: switch between light (default) and dark mode, save a Figma personal access token once so you don't have to paste it in for every import, configure your AI provider of choice, and see the app's version, author, and a link back to this repo.
 - A persistent left-hand navigation sidebar, in the style of a modern SaaS app, that scales smoothly with window size.
 
 ## Screenshots
@@ -29,7 +31,7 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 
 ![Tests tab](screenshots/tests-tab.png)
 
-**Test page** — share a remote link, then watch results roll in: a click heatmap over the actual screen, success/time/click stats, and a most-clicked breakdown per frame. The dropdown next to "Download heatmap" switches between the current view and the aggregate-average heatmap.
+**Test page** — share a remote link, then watch results roll in: a click heatmap over the actual screen, success/time/click stats, and a most-clicked breakdown per frame. The dropdown next to "Download heatmap" switches between the current view and the aggregate-average heatmap, and "Analyze trends" gets an AI-written summary of the session data.
 
 ![Test page with heatmap and stats](screenshots/test-page.png)
 
@@ -41,13 +43,21 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 
 ![Import prototype](screenshots/import-tab.png)
 
-**Settings** — toggle light/dark mode, save a Figma personal access token, and see the app's version and a link back to this repo.
+**Settings** — toggle light/dark mode, save a Figma personal access token, configure an AI provider (Anthropic, OpenAI, Gemini, or a local model), and see the app's version and a link back to this repo.
 
 ![Settings](screenshots/settings-tab.png)
 
 **Dark mode** — the opt-in alternative to the default light theme.
 
 ![Dark mode](screenshots/dark-mode.png)
+
+**First Click** — its own sidebar entry, showing where testers clicked *first* on a screen rather than every click they made there, ranked alongside the heatmap.
+
+![First click heatmap and ranking](screenshots/first-click.png)
+
+**AI Insights** — pick a test and get a written trend analysis straight away. This example ran against a free local model (Ollama) with zero API cost.
+
+![AI-generated trend analysis](screenshots/ai-insights.png)
 
 ## What's in this repo
 
