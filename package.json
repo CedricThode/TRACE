@@ -33,6 +33,7 @@
       "server.js",
       "figma-import.js",
       "store.js",
+      "tunnel.js",
       "public/**",
       "package.json"
     ],
