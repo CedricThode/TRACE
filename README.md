@@ -10,6 +10,16 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 
 > **First run:** since this build isn't code-signed, Windows SmartScreen will likely warn "Windows protected your PC." Click **More info → Run anyway** to continue.
 
+## Features
+
+- **Import prototypes from Figma**, each kept in its own folder — re-importing the same file refreshes it in place, and every folder can hold as many tests as you like.
+- **Pre-test questionnaire**: add custom questions, or quick-toggle common ones (Age, Gender, Occupation) with the right input for each — Age is a bounded number field, Gender a dropdown.
+- **Optional post-test comment box** so testers can describe their experience in their own words after finishing.
+- **Run it yourself** in-app, or **share a link** so someone else can take the test remotely from anywhere — no deployment needed, just a button.
+- **Results per test**: click/movement heatmaps over the actual screen, success/time/click stats, and a session log — click any session to zoom the whole view (heatmap, stats, most-clicked) down to just that one.
+- **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or the full dataset/heatmap for a whole test.
+- The admin view stays in sync automatically — a session recorded from a shared link shows up without needing to reload.
+
 ## What's in this repo
 
 Just the built app — `release/*.exe` — plus `package.json` / `package-lock.json` for reference. No application source code is included here.
