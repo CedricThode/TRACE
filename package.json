@@ -1,0 +1,68 @@
+{
+  "name": "trace",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Task-based usability telemetry over hosted Figma / web prototypes",
+  "main": "desktop/main.js",
+  "scripts": {
+    "start": "node server.js",
+    "import": "node figma-import.js",
+    "vendor": "node scripts/vendor.js",
+    "predesktop": "node scripts/vendor.js",
+    "desktop": "electron .",
+    "predist": "node scripts/vendor.js",
+    "dist": "electron-builder"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "adm-zip": "^0.5.14",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^24.13.3"
+  },
+  "build": {
+    "appId": "app.trace.desktop",
+    "productName": "TRACE",
+    "files": [
+      "desktop/**",
+      "server.js",
+      "figma-import.js",
+      "store.js",
+      "public/**",
+      "package.json"
+    ],
+    "directories": {
+      "output": "release"
+    },
+    "fileAssociations": [
+      {
+        "ext": "trace",
+        "name": "TRACE Prototype Package",
+        "description": "TRACE prototype package (manifest + frames)",
+        "role": "Viewer"
+      }
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
+        { "target": "dmg", "arch": ["universal"] },
+        { "target": "zip", "arch": ["universal"] }
+      ]
+    },
+    "win": {
+      "target": [
+        { "target": "nsis", "arch": ["x64"] },
+        { "target": "portable", "arch": ["x64"] }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
