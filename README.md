@@ -20,6 +20,24 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 - **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or the full dataset/heatmap for a whole test.
 - The admin view stays in sync automatically — a session recorded from a shared link shows up without needing to reload.
 
+## Screenshots
+
+**Tests tab** — every imported prototype gets its own folder, and each test underneath shows its session count and success rate at a glance.
+
+![Tests tab](screenshots/tests-tab.png)
+
+**Test page** — share a remote link, then watch results roll in: a click heatmap over the actual screen, success/time/click stats, and a most-clicked breakdown per frame.
+
+![Test page with heatmap and stats](screenshots/test-page.png)
+
+**Session log** — every recorded run, with its path through the prototype and completion time. Click one to scope the heatmap and stats above to just that session.
+
+![Session log](screenshots/sessions-log.png)
+
+**Import** — paste a Figma prototype link (or drop a `.trace`/`.zip` package) and TRACE pulls the file, renders each frame, and extracts the click hotspots automatically.
+
+![Import prototype](screenshots/import-tab.png)
+
 ## What's in this repo
 
 Just the built app — `release/*.exe` — plus `package.json` / `package-lock.json` for reference. No application source code is included here.
