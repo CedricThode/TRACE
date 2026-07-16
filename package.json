@@ -1,6 +1,8 @@
 {
   "name": "trace",
   "version": "1.0.0",
+  "author": "Cedric Thode",
+  "homepage": "https://github.com/CedricThode/TRACE",
   "private": true,
   "type": "module",
   "description": "Task-based usability telemetry over hosted Figma / web prototypes",
