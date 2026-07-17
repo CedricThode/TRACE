@@ -13,7 +13,7 @@ Usability-testing software for Figma prototypes: hosts an imported prototype, gi
 
 ## Get it
 
-Download [`release/TRACE Setup 1.0.0.exe`](release/) and run it - installs TRACE with a Start Menu shortcut and a proper uninstaller.
+Download [`release/TRACE Setup 1.1.0.exe`](release/) and run it - installs TRACE with a Start Menu shortcut and a proper uninstaller.
 
 Windows only. No other setup needed - it's a self-contained desktop app.
 
