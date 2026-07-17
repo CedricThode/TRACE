@@ -13,11 +13,13 @@ Usability-testing software for Figma prototypes: hosts an imported prototype, gi
 
 ## Get it
 
-Download [`release/TRACE Setup 1.1.0.exe`](release/) and run it - installs TRACE with a Start Menu shortcut and a proper uninstaller.
+Download `TRACE Setup 1.2.0.exe` from the [latest release](../../releases/latest) and run it - installs TRACE with a Start Menu shortcut and a proper uninstaller.
 
 Windows only. No other setup needed - it's a self-contained desktop app.
 
 > **First run:** since this build isn't code-signed, Windows SmartScreen will likely warn "Windows protected your PC." Click **More info → Run anyway** to continue.
+
+From here on, TRACE checks this repo's [Releases](../../releases) on launch and asks before downloading or installing anything newer - so this is the last time you should need to grab the installer by hand.
 
 ## Features
 
@@ -32,6 +34,7 @@ Windows only. No other setup needed - it's a self-contained desktop app.
 - **A/B testing**, in its own "A/B Testing" panel: pick any screen in the flow (or just the entry screen) and give it 2+ alternate versions - each tester gets a random one, held stable for their whole session, while the task/goal and the rest of the flow stay identical for everyone. Results show a side-by-side comparison (sessions, success rate, avg time/clicks per variant) plus a full heatmap/stats breakdown per variant, and "Analyze trends" compares variants directly using the same AI integration above.
 - **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or a full plain-text dataset export (every session's summary plus its raw click/movement trail) for a whole test.
 - The admin view stays in sync automatically - a session recorded from a shared link shows up without needing to reload.
+- **Auto-update**: checks this repo's Releases on launch, and asks before downloading and again before installing - never swaps the app out from under you without asking.
 - **Settings**: switch between light (default) and dark mode, save a Figma personal access token once so you don't have to paste it in for every import, configure your AI provider of choice, and see the app's version, author, and a link back to this repo.
 - A persistent left-hand navigation sidebar, in the style of a modern SaaS app, that scales smoothly with window size.
 
@@ -100,9 +103,12 @@ Your API key (or local endpoint) travels with that one request and is never stor
 
 ## Roadmap
 
-What's shipped, and roughly when - the current build is versioned **1.1.0**; everything below it is grouped by the order features actually landed, referenced against the commit that shipped each batch.
+What's shipped, and roughly when - the current build is versioned **1.2.0**; everything below it is grouped by the order features actually landed, referenced against the commit that shipped each batch.
 
-### 1.1.0 - current
+### 1.2.0 - current
+- **Auto-update**: TRACE now checks this repo's Releases on launch and can download/install a newer version itself, asking before each step.
+
+### 1.1.0 (`05b3739`)
 - **A/B testing**: its own panel and creation flow, variants on any screen in the flow (not just the entry point), a side-by-side comparison view, and a cross-variant AI analysis.
 - Fixed the AI analysis misreading internal click-tracking shorthand (`"(background)"`, `"(overlay backdrop)"`) as if it named an actual UI element that appeared, rather than describing where a miss-click landed.
 
@@ -134,4 +140,4 @@ What's shipped, and roughly when - the current build is versioned **1.1.0**; eve
 
 ## What's in this repo
 
-Just the built app - `release/*.exe` - plus `package.json` / `package-lock.json` for reference. No application source code is included here.
+`package.json` / `package-lock.json` for reference, plus screenshots and icons for this README. No application source code is included here. The built app itself (`.exe`, `.blockmap`, `latest.yml`) lives on the [Releases](../../releases) page rather than committed into the repo - that's also what TRACE's auto-updater reads from.
