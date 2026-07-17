@@ -11,6 +11,10 @@ Usability-testing software for Figma prototypes: hosts an imported prototype, gi
 </tr></table>
 </div>
 
+## What's in this repo
+
+`package.json` / `package-lock.json` for reference, plus screenshots and icons for this README. No application source code is included here. The built app itself (`.exe`, `.blockmap`, `latest.yml`) lives on the [Releases](../../releases) page rather than committed into the repo - that's also what TRACE's auto-updater reads from.
+
 ## Get it
 
 Download `TRACE Setup 1.2.0.exe` from the [latest release](../../releases/latest) and run it - installs TRACE with a Start Menu shortcut and a proper uninstaller.
@@ -104,7 +108,3 @@ Your API key (or local endpoint) travels with that one request and is never stor
 ## Changelog
 
 The current build is versioned **1.2.0**. See [CHANGELOG.md](CHANGELOG.md) for the full version history.
-
-## What's in this repo
-
-`package.json` / `package-lock.json` for reference, plus screenshots and icons for this README. No application source code is included here. The built app itself (`.exe`, `.blockmap`, `latest.yml`) lives on the [Releases](../../releases) page rather than committed into the repo - that's also what TRACE's auto-updater reads from.
