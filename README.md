@@ -3,11 +3,12 @@
 Usability-testing software for Figma prototypes: hosts an imported prototype, gives a tester a task to complete, and records their clicks, taps, and mouse movement as telemetry - then turns that into heatmaps and success/time/click stats per test.
 
 <div align="center">
-
-| ▤ | ✦ | ◉ | ⇄ |
-|:---:|:---:|:---:|:---:|
-| **Tests** | **AI Insights** | **First Click** | **A/B Testing** |
-
+<table><tr>
+<td align="center" width="140"><img src="icons/tests.svg" width="56" height="56" alt="Tests"><br><b>Tests</b></td>
+<td align="center" width="140"><img src="icons/ai-insights.svg" width="56" height="56" alt="AI Insights"><br><b>AI Insights</b></td>
+<td align="center" width="140"><img src="icons/first-click.svg" width="56" height="56" alt="First Click"><br><b>First Click</b></td>
+<td align="center" width="140"><img src="icons/ab-testing.svg" width="56" height="56" alt="A/B Testing"><br><b>A/B Testing</b></td>
+</tr></table>
 </div>
 
 ## Get it

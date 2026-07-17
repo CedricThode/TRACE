@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect x="10" y="10" width="80" height="80" rx="10" stroke="#5854FF" stroke-width="6"/>
+  <text x="26" y="72" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#5854FF" text-anchor="middle">A</text>
+  <line x1="38" y1="78" x2="58" y2="18" stroke="#5854FF" stroke-width="5" stroke-linecap="round"/>
+  <text x="72" y="40" font-family="Arial, Helvetica, sans-serif" font-size="32" font-weight="700" fill="#5854FF" text-anchor="middle">B</text>
+</svg>
