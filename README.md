@@ -20,6 +20,7 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 - **First Click mode**: a heatmap and ranking of where testers click *first* on a screen, not everything they ever click there — the classic first-click-testing signal for whether a layout reads the way you expect. Its own sidebar entry jumps straight into it for a chosen test.
 - **Aggregate average heatmap**: a second heatmap mode that shows what fraction of *all* testers who reached a screen clicked in each spot, rather than a raw pile of clicks — so a handful of testers doesn't make everything look equally "hot." Pick it from the download dropdown, separate from downloading whatever's currently on screen.
 - **AI trend analysis**: a button on a test's Results page sends its session data to an AI provider of your choice and gets back a written summary of trends and friction points — where testers hesitated, backtracked, or clicked the wrong thing — including whether any group (by age, occupation, or any custom pre-test question) struggled more than others. Works with Anthropic (Claude), OpenAI (GPT), Google (Gemini), or a private/local model (e.g. Ollama, LM Studio) for a fully free, offline option. The "AI Insights" sidebar entry jumps straight to it for a chosen test. See [How the AI analysis works](#how-the-ai-analysis-works) below.
+- **A/B testing**, in its own "A/B Testing" panel: pick any screen in the flow (or just the entry screen) and give it 2+ alternate versions — each tester gets a random one, held stable for their whole session, while the task/goal and the rest of the flow stay identical for everyone. Results show a side-by-side comparison (sessions, success rate, avg time/clicks per variant) plus a full heatmap/stats breakdown per variant, and "Analyze trends" compares variants directly using the same AI integration above.
 - **Downloadable evidence**: heatmap PNGs and plain-text session notes (task, result, questionnaire answers, comment) per session, or a full plain-text dataset export (every session's summary plus its raw click/movement trail) for a whole test.
 - The admin view stays in sync automatically — a session recorded from a shared link shows up without needing to reload.
 - **Settings**: switch between light (default) and dark mode, save a Figma personal access token once so you don't have to paste it in for every import, configure your AI provider of choice, and see the app's version, author, and a link back to this repo.
@@ -59,6 +60,18 @@ Windows only. No other setup needed — it's a self-contained desktop app.
 
 ![AI-generated trend analysis](screenshots/ai-insights.png)
 
+**A/B Testing** — its own panel, separate from regular Tests, listing only tests set up with variants.
+
+![A/B Testing panel](screenshots/ab-testing-tab.png)
+
+**Creating an A/B test** — pick which screen varies (the entry screen, or any specific one), add alternate frames as variants, and TRACE reminds you to keep their hotspots pointing to the same destinations so testers can actually finish the flow.
+
+![Creating an A/B test](screenshots/ab-create.png)
+
+**A/B results** — a side-by-side comparison strip, then a full results view (heatmap, stats, session log) per variant behind a tab, and a cross-variant "Analyze trends" that actually contrasts the two rather than only ever seeing one variant's sessions.
+
+![A/B test results, comparing two variants](screenshots/ab-results.png)
+
 ## How the AI analysis works
 
 Clicking **Analyze trends** doesn't just dump raw session JSON at a model. TRACE first builds a compact, plain-text summary: the test's name, task, and goal screen; aggregate stats (session count, success rate, average time/clicks); then per session, its result, duration, click count, the path of screens it visited, its pre-test Q&A and post-test comment, and its click/tap trail. Raw pointer-movement events are left out — they're noise for spotting trends and would just burn tokens.
@@ -78,9 +91,13 @@ Your API key (or local endpoint) travels with that one request and is never stor
 
 ## Roadmap
 
-What's shipped, and roughly when — the current build is versioned **1.0.0**; everything below it is grouped by the order features actually landed, referenced against the commit that shipped each batch.
+What's shipped, and roughly when — the current build is versioned **1.1.0**; everything below it is grouped by the order features actually landed, referenced against the commit that shipped each batch.
 
-### 1.0.0 — current (`e35e7fb`)
+### 1.1.0 — current
+- **A/B testing**: its own panel and creation flow, variants on any screen in the flow (not just the entry point), a side-by-side comparison view, and a cross-variant AI analysis.
+- Fixed the AI analysis misreading internal click-tracking shorthand (`"(background)"`, `"(overlay backdrop)"`) as if it named an actual UI element that appeared, rather than describing where a miss-click landed.
+
+### 1.0.0 (`e35e7fb`)
 - AI trend analysis compares testers by their pre-test questionnaire answers (age, occupation, or any custom question) against their outcomes, calling out which group struggled more — with a guardrail against over-reading a one- or two-session sample.
 - README documents exactly what data gets sent to the AI and which provider endpoint is used.
 
